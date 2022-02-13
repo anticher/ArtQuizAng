@@ -1,0 +1,78 @@
+<div class="settings_page">
+    <div class="top">
+        <div class="header">
+            <!-- ${Translation[lang].Settings} -->
+        </div>
+    </div>
+    <div class="middle">
+        <div class="item">
+            <div class="item_row">
+                <div class="item_header font30 font700">
+                    <!-- ${Translation[lang]['Change language']} -->
+                </div>
+                <div class="item_right">
+                    <span>русский</span>
+                    <div class="check">
+                        <input id="checkLang" type="checkbox" name="check" [checked]="(getLangFromLocalStorage())" (input)="(setLangToLocalStorage())">
+                        <label for="checkLang"></label>
+                    </div>
+                    <span>english</span>
+                </div>
+            </div>
+            <div class="item_row">
+                <div class="item_header font30 font700">
+                    <!-- ${Translation[lang]['Sounds volume']} -->
+                </div>
+                <div class="item_right">
+                    <div class="check">
+                        <input id="checkSound" type="checkbox" name="check" [checked]="(getSoundMusicTimerStatusFromLocalStorage('isSound'))" (input)="(setSoundMusicTimerStatusToLocalStorage('isSound'))">
+                        <label for="checkSound"></label>
+                    </div>
+                    <span>0</span>
+                    <input class="sound_bar" type="range" name="sound_range" [value]="getSoundMusicTimerValueFromLocalStorage('soundVolume')" (input)="setSoundMusicTimerValueToLocalStorage('soundVolume', $event)">
+                    <span>100</span>
+                </div>
+            </div>
+            <div class="item_row">
+                <div class="item_header font30 font700">
+                    <!-- ${Translation[lang]['Music volume']} -->
+                </div>
+                <div class="item_right">
+                    <div class="check">
+                        <input id="checkMusic" type="checkbox" name="check" [checked]="(getSoundMusicTimerStatusFromLocalStorage('isMusic'))" (input)="(setSoundMusicTimerStatusToLocalStorage('isMusic'))">
+                        <label for="checkMusic"></label>
+                    </div>
+                    <span>0</span>
+                    <input class="music_bar" type="range" name="music_range" [value]="getSoundMusicTimerValueFromLocalStorage('musicVolume')" (input)="setSoundMusicTimerValueToLocalStorage('musicVolume', $event)">
+                    <span>100</span>
+                </div>
+            </div>
+            <div class="item_row">
+                <div class="item_header font30 font700">
+                    <!-- ${Translation[lang]['Time game']} -->
+                </div>
+                <div class="item_right">
+                    <div class="check">
+                        <input id="checkTime" type="checkbox" name="check" [checked]="(getSoundMusicTimerStatusFromLocalStorage('timeGame'))" (input)="(setSoundMusicTimerStatusToLocalStorage('timeGame'))">
+                        <label for="checkTime"></label>
+                    </div>
+                    <span>5</span>
+                    <input class="time_bar" type="range" name="timer_range" min="5" max="30" step="5" [value]="getSoundMusicTimerValueFromLocalStorage('timeSpeed')" (input)="setSoundMusicTimerValueToLocalStorage('timeSpeed', $event)">
+                    <span>30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button_box">
+            <button [routerLink]="['']" class="save_button button button_center button_white">
+                <!-- ${Translation[lang].Back} -->
+            </button>
+        </div>
+        <div class="button_box">
+            <button [routerLink]="['']" (click)="settingsToDefaults()" class="defaults_button button button_center button_white">
+                <!-- ${Translation[lang].Defaults} -->
+            </button>
+        </div>
+    </div>
+</div>
