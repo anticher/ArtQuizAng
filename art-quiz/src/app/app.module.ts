@@ -9,7 +9,7 @@ import { StartPageComponent } from './components/start-page/start-page.component
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { CategoryItemComponent } from './components/category-item/category-item.component';
 import { QuizPageComponent } from './components/quiz-page/quiz-page.component';
-import { LanguagePipe } from './pipes/language.pipe';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +19,6 @@ import { LanguagePipe } from './pipes/language.pipe';
     SettingsPageComponent,
     CategoryItemComponent,
     QuizPageComponent,
-    LanguagePipe,
   ],
   imports: [
     BrowserModule,

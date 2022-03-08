@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguagesService } from 'src/app/services/languages.service';
 
 @Component({
   selector: 'app-start-page',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class StartPageComponent implements OnInit {
   
   constructor(
+    public languagesService: LanguagesService,
   ) { }
 
   ngOnInit(): void {

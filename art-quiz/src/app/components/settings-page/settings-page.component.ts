@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguagesService } from 'src/app/services/languages.service';
 import { EngineService } from '../../services/engine.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 
@@ -8,27 +9,24 @@ import { LocalStorageService } from '../../services/local-storage.service';
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit {
-  // settingsString = ''
-  // changeLanguageString = ''
-  // Sounds volume
-  // Music volume
-  // Time game
-  // Back
-  // Defaults
-
+  checkLang = true
+  lang = 'en'
   constructor(
     private engineService: EngineService,
     private localStorageService: LocalStorageService,
+    public languagesService: LanguagesService,
     ) { }
 
   ngOnInit(): void {
+    this.checkLang = this.getLangFromLocalStorage()
   }
 
   settingsToDefaults() {
     this.engineService.setDefaultsLocal()
   }
 
-  getLangFromLocalStorage(): boolean | null {
+  getLangFromLocalStorage(): boolean {
+    this.lang = this.localStorageService.getToLocal('lang') ? this.localStorageService.getToLocal('lang')! : 'en'
     return this.localStorageService.getToLocal('lang') === 'en'
   }
   setLangToLocalStorage() {
@@ -36,6 +34,7 @@ export class SettingsPageComponent implements OnInit {
     this.localStorageService.setToLocal('lang', 'ru')
    } else {
     this.localStorageService.setToLocal('lang', 'en')
+    this.ngOnInit()
    }
   }
 

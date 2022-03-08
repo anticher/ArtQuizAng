@@ -1,19 +1,19 @@
 <div class="settings_page">
     <div class="top">
         <div class="header">
-            <!-- ${Translation[lang].Settings} -->
+            {{this.languagesService.getTextInRightLang('Settings')}}
         </div>
     </div>
     <div class="middle">
         <div class="item">
             <div class="item_row">
                 <div class="item_header font30 font700">
-                    <!-- ${Translation[lang]['Change language']} -->
+                    {{this.languagesService.getTextInRightLang('Change language')}}
                 </div>
                 <div class="item_right">
                     <span>русский</span>
                     <div class="check">
-                        <input id="checkLang" type="checkbox" name="check" [checked]="(getLangFromLocalStorage())" (input)="(setLangToLocalStorage())">
+                        <input id="checkLang" type="checkbox" name="check" [checked]=checkLang (input)="(setLangToLocalStorage())">
                         <label for="checkLang"></label>
                     </div>
                     <span>english</span>
@@ -21,7 +21,7 @@
             </div>
             <div class="item_row">
                 <div class="item_header font30 font700">
-                    <!-- ${Translation[lang]['Sounds volume']} -->
+                    {{this.languagesService.getTextInRightLang('Sounds volume')}}
                 </div>
                 <div class="item_right">
                     <div class="check">
@@ -35,7 +35,7 @@
             </div>
             <div class="item_row">
                 <div class="item_header font30 font700">
-                    <!-- ${Translation[lang]['Music volume']} -->
+                    {{this.languagesService.getTextInRightLang('Music volume')}}
                 </div>
                 <div class="item_right">
                     <div class="check">
@@ -49,7 +49,7 @@
             </div>
             <div class="item_row">
                 <div class="item_header font30 font700">
-                    <!-- ${Translation[lang]['Time game']} -->
+                    {{this.languagesService.getTextInRightLang('Time game')}}
                 </div>
                 <div class="item_right">
                     <div class="check">
@@ -66,12 +66,12 @@
     <div class="bottom">
         <div class="button_box">
             <button [routerLink]="['']" class="save_button button button_center button_white">
-                <!-- ${Translation[lang].Back} -->
+                {{this.languagesService.getTextInRightLang('Back')}}
             </button>
         </div>
         <div class="button_box">
             <button [routerLink]="['']" (click)="settingsToDefaults()" class="defaults_button button button_center button_white">
-                <!-- ${Translation[lang].Defaults} -->
+                {{this.languagesService.getTextInRightLang('Defaults')}}
             </button>
         </div>
     </div>

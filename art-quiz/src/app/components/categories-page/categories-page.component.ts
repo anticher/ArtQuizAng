@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { LanguagesService } from 'src/app/services/languages.service';
 
 
 @Component({
@@ -10,8 +11,11 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class CategoriesPageComponent implements OnInit {
   items: number[] = []
-  constructor(private categoriesService: CategoriesService,
-    private router: Router) {}
+  constructor(
+    private categoriesService: CategoriesService,
+    private router: Router,
+    public languagesService: LanguagesService
+    ) {}
 
   ngOnInit(): void {
     const categoryType = this.router.url.substring(1)
