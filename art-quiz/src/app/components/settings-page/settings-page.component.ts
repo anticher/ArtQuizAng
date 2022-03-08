@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EngineService } from '../engine.service';
-import { LocalStorageService } from '../local-storage.service';
+import { EngineService } from '../../services/engine.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-settings-page',

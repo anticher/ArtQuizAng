@@ -10,23 +10,21 @@
       <button [routerLink]="['/author-quizes']" class="item_img author">
       </button>
       <div class="item_descr font36">
-        <!-- ${Translation[lang]['Painter quiz']} -->
+        {{this.painterQuizString}}
       </div>
     </div>
     <div class="item">
-      <button  [routerLink]="['/categories-picture']" class="item_img picture">
+      <button  [routerLink]="['/picture-quizes']" class="item_img picture">
       </button>
       <div class="item_descr font36">
-
-        <!-- ${Translation[lang]['Picture quiz']} -->
+        {{this.pictureQuizString}}
       </div>
     </div>
   </div>
   <div class="bottom">
     <div class="button_box">
       <button [routerLink]="['/settings']" class="settings_button button button_center button_white">
-        Settings
-        <!-- ${Translation[lang].Settings} -->
+        {{this.settingsString}}
       </button>
     </div>
   </div>

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoriesPageComponent } from './categories-page/categories-page.component';
-import { StartPageComponent } from './start-page/start-page.component';
-import { SettingsPageComponent } from './settings-page/settings-page.component';
-import { AuthorQuizesComponent } from './author-quizes/author-quizes.component';
+import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -11,7 +10,8 @@ const routes: Routes = [{
 },
 { path: 'settings', component: SettingsPageComponent },
 // { path: 'categories', component: CategoriesPageComponent },
-{ path: 'author-quizes', component: AuthorQuizesComponent },
+{ path: 'author-quizes', component: CategoriesPageComponent },
+{ path: 'picture-quizes', component: CategoriesPageComponent },
 // { path: 'products/:productId', component: ProductDetailsComponent },
 ];
 
