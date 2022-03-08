@@ -8,10 +8,17 @@ import { LocalStorageService } from '../../services/local-storage.service';
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit {
+  // settingsString = ''
+  // changeLanguageString = ''
+  // Sounds volume
+  // Music volume
+  // Time game
+  // Back
+  // Defaults
 
   constructor(
     private engineService: EngineService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
     ) { }
 
   ngOnInit(): void {
