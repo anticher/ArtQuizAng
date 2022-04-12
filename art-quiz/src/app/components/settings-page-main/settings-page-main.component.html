@@ -1,0 +1,70 @@
+<div class="settings-page-main">
+    <div class="settings-page-main__row">
+        <div class="settings-page-main__item-title">
+            {{'Change language' | language}}
+        </div>
+        <div class="settings-page-main__item">
+            <span>русский</span>
+            <div class="settings-page-main__check">
+                <input id="checkLang" type="checkbox" name="check" [checked]=checkLang
+                    (input)="(setLangToLocalStorage())">
+                <label for="checkLang"></label>
+            </div>
+            <span>english</span>
+        </div>
+    </div>
+    <div class="settings-page-main__main-row">
+        <div class="settings-page-main__item-title">
+            {{'Sounds volume' | language}}
+        </div>
+        <div class="settings-page-main__item">
+            <div class="settings-page-main__check">
+                <input id="checkSound" type="checkbox" name="check"
+                    [checked]="(getSoundMusicTimerStatusFromLocalStorage('isSound'))"
+                    (input)="(setSoundMusicTimerStatusToLocalStorage('isSound'))">
+                <label for="checkSound"></label>
+            </div>
+            <span>0</span>
+            <input class="settings-page-main__sound-bar" type="range" name="sound_range"
+                [value]="getSoundMusicTimerValueFromLocalStorage('soundVolume')"
+                (input)="setSoundMusicTimerValueToLocalStorage('soundVolume', $event)">
+            <span>100</span>
+        </div>
+    </div>
+    <div class="settings-page-main__main-row">
+        <div class="settings-page-main__item-title">
+            {{'Music volume' | language}}
+        </div>
+        <div class="settings-page-main__item">
+            <div class="settings-page-main__check">
+                <input id="checkMusic" type="checkbox" name="check"
+                    [checked]="(getSoundMusicTimerStatusFromLocalStorage('isMusic'))"
+                    (input)="(setSoundMusicTimerStatusToLocalStorage('isMusic'))">
+                <label for="checkMusic"></label>
+            </div>
+            <span>0</span>
+            <input class="settings-page-main__music-bar" type="range" name="music_range"
+                [value]="getSoundMusicTimerValueFromLocalStorage('musicVolume')"
+                (input)="setSoundMusicTimerValueToLocalStorage('musicVolume', $event)">
+            <span>100</span>
+        </div>
+    </div>
+    <div class="settings-page-main__main-row">
+        <div class="settings-page-main__item-title">
+            {{'Time game' | language}}
+        </div>
+        <div class="settings-page-main__item">
+            <div class="settings-page-main__check">
+                <input id="checkTime" type="checkbox" name="check"
+                    [checked]="(getSoundMusicTimerStatusFromLocalStorage('timeGame'))"
+                    (input)="(setSoundMusicTimerStatusToLocalStorage('timeGame'))">
+                <label for="checkTime"></label>
+            </div>
+            <span>5</span>
+            <input class="settings-page-main__time-bar" type="range" name="timer_range" min="5" max="30" step="5"
+                [value]="getSoundMusicTimerValueFromLocalStorage('timeSpeed')"
+                (input)="setSoundMusicTimerValueToLocalStorage('timeSpeed', $event)">
+            <span>30</span>
+        </div>
+    </div>
+</div>

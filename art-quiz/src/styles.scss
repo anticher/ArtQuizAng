@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 $main: #1e1f26;
 $main2: #283655;
 $main3: #4d648d;
@@ -7,20 +6,9 @@ $white: #ffffff;
 $green: #88ff00;
 $red: #ff0022;
 $grey: #555555;
+$black: #000000;
 
-// font
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap");
-
-//pages styles
-// @import "./scss/normalize.scss";
-// @import "./scss/start-page.scss";
-// @import "./scss/settings-page.scss";
-// @import "./scss/categories-page.scss";
-// @import "./scss/choose-author-page.scss";
-// @import "./scss/choose-picture-page.scss";
-// @import "./scss/pop.scss";
-
-//global styles
 
 * {
   margin: 0;
@@ -49,40 +37,6 @@ body {
   transition: all 0.3s ease-out;
 }
 
-.font72 {
-  font-size: 72px;
-  line-height: 78px;
-}
-
-.font36 {
-  font-size: 36px;
-  line-height: 44px;
-}
-
-.font30 {
-  font-size: 30px;
-  line-height: 37px;
-}
-
-.font24 {
-  font-size: 24px;
-  line-height: 29px;
-}
-
-.font18 {
-  font-size: 18px;
-  line-height: 22px;
-}
-
-.font14 {
-  font-size: 14px;
-  line-height: 17px;
-}
-
-.font700 {
-  font-weight: 700;
-}
-
 button:hover {
   cursor: pointer;
 }
@@ -103,60 +57,6 @@ button:hover {
   color: $main;
 }
 
-.button_center {
-  padding: 0 5px;
-}
-
-.button_box {
-  width: 210px;
-  height: 70px;
-}
-
-.button:link,
-.button:visited {
-  transition: all 0.2;
-  position: absolute;
-}
-
-.button:hover {
-  transform: translateY(3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.button:active {
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.button_white {
-  background-color: $main4;
-}
-
-.button::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
-}
-
-@media (max-width: 768px) {
-  .button_box {
-    width: 139px;
-    height: 44px;
-  }
-  .button {
-    width: 139px;
-    height: 44px;
-    font-size: 18px;
-    line-height: 22px;
-    background-size: 35px;
-  }
-}
-
 .hidden {
   display: none;
 }
@@ -164,15 +64,4 @@ button:hover {
 .hiding {
   opacity: 0;
   visibility: hidden;
-}
-
-.back_button {
-  padding: 0;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background-image: url(assets/images/svg/cross.svg);
-  background-position: center;
-  background-size: 70%;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
-import { LanguagesService } from 'src/app/services/languages.service';
 
 
 @Component({
@@ -14,7 +13,6 @@ export class CategoriesPageComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private router: Router,
-    public languagesService: LanguagesService
     ) {}
 
   ngOnInit(): void {

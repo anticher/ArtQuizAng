@@ -1,16 +1,18 @@
-<div class="categories_page">
-    <div class="top">
-        <div class="header">
-            {{this.languagesService.getTextInRightLang('Categories')}}
+<div class="categories-page">
+    <div class="categories-page__header">
+        <div class="categories-page__title">
+            {{'Categories' | language}}
         </div>
-        <div class="buttons_wrapper">
-            <button [routerLink]="['']" class="home_button button">
-
+        <div class="categories-page__buttons">
+            <button [routerLink]="['']" class="categories-page__home-button button">
             </button>
         </div>
     </div>
-    <div class="middle">
-        <div class="items_wrapper">
-            <app-category-item class="item grey" *ngFor="let item of items" [routerLink]="['quiz/1']" [style.background-image]="'url(../../assets/images/square/' + item + '.jpg)'"></app-category-item>
+    <div class="categories-page__main">
+        <div class="categories-page__items">
+            <app-category-item class="categories-page__item" *ngFor="let item of items" [routerLink]="[item]"
+                [style.background-image]="'url(../../assets/images/square/' + item + '.jpg)'">
+            </app-category-item>
         </div>
     </div>
+</div>
