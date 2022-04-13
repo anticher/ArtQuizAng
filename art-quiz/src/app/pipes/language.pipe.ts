@@ -20,8 +20,8 @@ export class LanguagePipe implements PipeTransform {
     'Scores': 'Результаты',
     'Who is the author of this picture?': 'Кто автор этой картины?',
     'What picture was painted by': 'Какую картину написал',
-    'Next': 'Следующий',
-    'Congratulations': 'Поздравляем'
+    'Next': 'Далее',
+    'Congratulations!': 'Поздравляем!'
   }
   private mapRu: Map<string, string> = new Map(Object.entries(this.ruVocabulary))
 

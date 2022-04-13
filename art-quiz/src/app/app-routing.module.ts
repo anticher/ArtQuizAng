@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoriesPageComponent } from './components/categories-page/categories-page.component';
 import { StartPageComponent } from './components/start-page/start-page.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
-import { QuizPageComponent } from './components/quiz-page/quiz-page.component';
+import { QuizAuthorComponent } from './components/quiz-author/quiz-author.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,7 +12,7 @@ const routes: Routes = [{
 { path: 'settings', component: SettingsPageComponent },
 // { path: 'categories', component: CategoriesPageComponent },
 { path: 'author-quizes', component: CategoriesPageComponent },
-{ path: 'author-quizes/:id', component: QuizPageComponent },
+{ path: 'author-quizes/:id', component: QuizAuthorComponent },
 { path: 'picture-quizes', component: CategoriesPageComponent },
 // { path: 'products/:productId', component: ProductDetailsComponent },
 ];

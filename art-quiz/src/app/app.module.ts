@@ -8,10 +8,11 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 import { StartPageComponent } from './components/start-page/start-page.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { CategoryItemComponent } from './components/category-item/category-item.component';
-import { QuizPageComponent } from './components/quiz-page/quiz-page.component';
+import { QuizAuthorComponent } from './components/quiz-author/quiz-author.component';
 import { QuizPopComponent } from './components/quiz-pop/quiz-pop.component';
 import { SettingsPageMainComponent } from './components/settings-page-main/settings-page-main.component';
 import { LanguagePipe } from './pipes/language.pipe';
+import { FinalPopComponent } from './components/final-pop/final-pop.component';
 
 
 @NgModule({
@@ -21,10 +22,11 @@ import { LanguagePipe } from './pipes/language.pipe';
     StartPageComponent,
     SettingsPageComponent,
     CategoryItemComponent,
-    QuizPageComponent,
+    QuizAuthorComponent,
     QuizPopComponent,
     SettingsPageMainComponent,
     LanguagePipe,
+    FinalPopComponent,
   ],
   imports: [
     BrowserModule,

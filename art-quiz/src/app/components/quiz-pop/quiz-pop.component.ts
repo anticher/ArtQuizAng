@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ImageInfo } from 'src/app/models/image-info.model';
 
 @Component({
   selector: 'app-quiz-pop',
   templateUrl: './quiz-pop.component.html',
   styleUrls: ['./quiz-pop.component.scss']
 })
-export class QuizPopComponent implements OnInit {
+export class QuizPopComponent {
+  @Output() nextQuestionEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  @Input() imageInfo: ImageInfo = {author: '', name: '', year: '', imageNum: ''}
 
-  ngOnInit(): void {
+  public nextQuestion(): void {
+    this.nextQuestionEvent.emit()
   }
-
 }

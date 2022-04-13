@@ -1,0 +1,36 @@
+<div class="choose-author-page">
+    <div class="choose-author-page__header">
+        <button [routerLink]="['/author-quizes']" class="choose-author-page__back-button">back</button>
+        <h2 class="choose-author-page__title">
+            {{'Who is the author of this picture?' | language}}
+        </h2>
+        <button class="choose-author-page__timer-button">
+        </button>
+    </div>
+    <div class="choose-author-page__main">
+        <div
+        *ngIf="showPicture;else showPop"
+        class="choose-author-page__item"
+        [style.background-image]="'url(../../assets/images/square/' + imageInfo.imageNum + '.jpg)'"
+        >
+        </div>
+        <ng-template #showPop>
+
+            <app-quiz-pop *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()" [imageInfo]="imageInfo"></app-quiz-pop>
+            <ng-template #showFinalPop>
+                <app-final-pop (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop> 
+            </ng-template>
+          </ng-template> 
+        <div class="choose-author-page__bullets">
+            <div class="choose-author-page__bullet" *ngFor="let item of questionsStatus"
+            [ngClass]="{
+                'choose-author-page__bullet_yellow': item  === 'active',
+                'choose-author-page__bullet_green': item  === 'correct',
+                'choose-author-page__bullet_red': item  === 'incorrect'
+                }" ></div>
+        </div>
+        <div class="choose-author-page__answers">
+            <button *ngFor="let item of answersArray" (click)="onVariantClick($event)" class="choose-author-page__answer" [disabled]="variantDisabled">{{item}}</button>
+        </div>
+    </div>
+</div>

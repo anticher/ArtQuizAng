@@ -1,13 +1,12 @@
 <div class="quiz-pop">
-    <div class="quiz-pop__picture"></div>
+    <div class="quiz-pop__picture"
+        [style.background-image]="'url(../../assets/images/square/' + imageInfo.imageNum + '.jpg)'"></div>
     <p class="quiz-pop__text">
-        <span class="quiz-pop__author"></span>
-        <span class="quiz-pop__name"></span>
-        <span class="quiz-pop__year"></span>
-        <span class="quiz-pop__greetings"></span>
-        <span class="quiz-pop__score"></span>
+        <span class="quiz-pop__author">{{imageInfo.author}}</span>
+        <span class="quiz-pop__name">{{imageInfo.name}}</span>
+        <span class="quiz-pop__year">{{imageInfo.year}}</span>
     </p>
-    <button class="quiz-pop__button">
+    <button class="quiz-pop__button" (click)="nextQuestion()">
         {{'Next' | language}}
     </button>
 </div>
