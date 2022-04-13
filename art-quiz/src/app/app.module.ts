@@ -13,6 +13,7 @@ import { QuizPopComponent } from './components/quiz-pop/quiz-pop.component';
 import { SettingsPageMainComponent } from './components/settings-page-main/settings-page-main.component';
 import { LanguagePipe } from './pipes/language.pipe';
 import { FinalPopComponent } from './components/final-pop/final-pop.component';
+import { QuizPictureComponent } from './components/quiz-picture/quiz-picture.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FinalPopComponent } from './components/final-pop/final-pop.component';
     SettingsPageMainComponent,
     LanguagePipe,
     FinalPopComponent,
+    QuizPictureComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { CategoriesPageComponent } from './components/categories-page/categories
 import { StartPageComponent } from './components/start-page/start-page.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { QuizAuthorComponent } from './components/quiz-author/quiz-author.component';
+import { QuizPictureComponent } from './components/quiz-picture/quiz-picture.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,7 @@ const routes: Routes = [{
 { path: 'author-quizes', component: CategoriesPageComponent },
 { path: 'author-quizes/:id', component: QuizAuthorComponent },
 { path: 'picture-quizes', component: CategoriesPageComponent },
+{ path: 'picture-quizes/:id', component: QuizPictureComponent },
 // { path: 'products/:productId', component: ProductDetailsComponent },
 ];
 

@@ -4,13 +4,19 @@ import { ImageInfo } from '../models/image-info.model';
 import { ImagesService } from './images.service';
 import { EngineService } from './engine.service';
 
+
 @Injectable()
-export class QuizAuthorService {
-  public target!: HTMLInputElement
-  public firstId: number = 0
-  public id: number = 0
-  public lastId: number = 0
-  public questionsStatusId: number = 0
+export class QuizPictureService {
+  public target!: HTMLInputElement;
+
+  public firstId: number = 0;
+
+  public id: number = 0;
+
+  public lastId: number = 0;
+
+  public questionsStatusId: number = 0;
+
   public questionsStatusSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([
     'active',
     'incomplete',
@@ -22,15 +28,23 @@ export class QuizAuthorService {
     'incomplete',
     'incomplete',
     'incomplete'
-  ])
-  public answersArray: string[] = []
-  public answersSubject: Subject<string[]> = new Subject<string[]>()
-  public correctAnswer: string = ''
-  public imagesInfo: ImageInfo[] = []
-  public imageInfoSubject: Subject<ImageInfo> = new Subject<ImageInfo>()
-  public showPictureSubject: Subject<boolean> = new Subject<boolean>()
-  public variantDisabledSubject: Subject<boolean> = new Subject<boolean>()
-  public finalScoreSubject: Subject<string> = new Subject<string>()
+  ]);
+
+  public answersArray: string[] = [];
+
+  public answersSubject: Subject<string[]> = new Subject<string[]>();
+
+  public correctAnswer: string = '';
+
+  public imagesInfo: ImageInfo[] = [];
+
+  public imageInfoSubject: Subject<ImageInfo> = new Subject<ImageInfo>();
+
+  public showPictureSubject: Subject<boolean> = new Subject<boolean>();
+
+  public variantDisabledSubject: Subject<boolean> = new Subject<boolean>();
+
+  public finalScoreSubject: Subject<string> = new Subject<string>();
 
   constructor(public imagesService: ImagesService) { }
 
@@ -50,15 +64,15 @@ export class QuizAuthorService {
 
   private questionInit(): void {
     this.imageInfoSubject.next(this.imagesInfo[this.id])
-    this.correctAnswer = this.imagesInfo[this.id].author
-    this.answersArray.push(this.correctAnswer)
+    const correctAnswerAuthor = this.imagesInfo[this.id].author
+    this.correctAnswer = this.imagesInfo[this.id].imageNum
+    this.answersArray.push(this.imagesInfo[this.id].imageNum)
     while (this.answersArray.length < 4) {
       const index = EngineService.getRandomInt(0, 240)
-      if (!this.answersArray.includes(this.imagesInfo[index].author)) {
-        this.answersArray.push(this.imagesInfo[index].author)
+      if (this.imagesInfo[index].author !== correctAnswerAuthor) {
+        this.answersArray.push(this.imagesInfo[index].imageNum)
       }
     }
-
     EngineService.shuffleArray(this.answersArray)
     this.answersSubject.next(this.answersArray)
   }
@@ -87,14 +101,17 @@ export class QuizAuthorService {
       this.hidePop()
       this.variantDisabledSubject.next(false);
     }
-
   }
 
   public handleAnswer(event: Event): void {
     this.showPop()
     this.variantDisabledSubject.next(true);
     this.target = <HTMLInputElement>event.target
-    if (this.target.textContent === this.correctAnswer) {
+    const answerImageUrl = this.target.style.backgroundImage
+    const answerIdStart = answerImageUrl.lastIndexOf('/') + 1
+    const answerIdEnd = answerImageUrl.lastIndexOf('.jpg')
+    const answerId = answerImageUrl.substring(answerIdStart, answerIdEnd)
+    if (answerId === this.correctAnswer) {
       this.onCorrectAnswer()
     } else {
       this.onIncorrectAnswer()
@@ -123,7 +140,7 @@ export class QuizAuthorService {
   }
 
   private onCorrectAnswer(): void {
-    this.target.classList.add('choose-author-page__answer-green')
+    this.target.classList.add('choose-picture-page__item-green')
     let questionsStatus = []
     const subcription = this.questionsStatusSubject.subscribe((value) => {
       questionsStatus = [...value]
@@ -134,7 +151,7 @@ export class QuizAuthorService {
   }
 
   private onIncorrectAnswer(): void {
-    this.target.classList.add('choose-author-page__answer-red')
+    this.target.classList.add('choose-picture-page__item-red')
     let questionsStatus = []
     const subcription = this.questionsStatusSubject.subscribe((value) => {
       questionsStatus = [...value]
