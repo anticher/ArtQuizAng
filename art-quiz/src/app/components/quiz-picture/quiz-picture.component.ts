@@ -46,6 +46,9 @@ export class QuizPictureComponent implements OnInit {
     this.quizPictureService.finalScoreSubject.subscribe((value) => {
       this.finalScore = value
     })
+    this.quizPictureService.variantDisabledSubject.subscribe((value) => {
+      this.variantDisabled = value
+    })
   }
 
   public nextQuestion(): void {

@@ -45,6 +45,9 @@ export class QuizAuthorComponent implements OnInit {
     this.quizAuthorService.finalScoreSubject.subscribe((value) => {
       this.finalScore = value
     })
+    this.quizAuthorService.variantDisabledSubject.subscribe((value) => {
+      this.variantDisabled = value
+    })
     
   }
 
