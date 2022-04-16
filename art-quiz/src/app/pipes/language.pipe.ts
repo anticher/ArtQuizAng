@@ -29,7 +29,7 @@ export class LanguagePipe implements PipeTransform {
   }
 
   transform(value: string): string {
-    const lang = this.localStorageService.getToLocal('lang')
+    const lang = this.localStorageService.getFromLocal('lang')
     if (lang === 'ru') {
       return this.mapRu.get(value) ? this.mapRu.get(value)! : ''
     }

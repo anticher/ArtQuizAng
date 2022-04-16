@@ -1,0 +1,3 @@
+<div class="categories-item" [ngClass]="{'categories-item_first-play': !isPlayedBefore}" [style.background-image]="'url(../../assets/images/square/' + this.itemId + '.jpg)'">
+    <button *ngIf="isPlayedBefore" class="categories-item__button">{{score}} / 10</button>
+</div>

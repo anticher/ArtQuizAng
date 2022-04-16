@@ -23,8 +23,8 @@ export class SettingsPageMainComponent implements OnInit {
     }
   
     getLangFromLocalStorage(): boolean {
-      this.lang = this.localStorageService.getToLocal('lang') ? this.localStorageService.getToLocal('lang')! : 'en'
-      return this.localStorageService.getToLocal('lang') === 'en'
+      this.lang = this.localStorageService.getFromLocal('lang') ? this.localStorageService.getFromLocal('lang')! : 'en'
+      return this.localStorageService.getFromLocal('lang') === 'en'
     }
     setLangToLocalStorage() {
      if (this.getLangFromLocalStorage()) {
@@ -36,7 +36,7 @@ export class SettingsPageMainComponent implements OnInit {
     }
   
     getSoundMusicTimerStatusFromLocalStorage(what: string): boolean | null {
-      return this.localStorageService.getToLocal(what) === 'true'
+      return this.localStorageService.getFromLocal(what) === 'true'
     }
   
     setSoundMusicTimerStatusToLocalStorage(what: string) {
@@ -48,7 +48,7 @@ export class SettingsPageMainComponent implements OnInit {
     }
   
     getSoundMusicTimerValueFromLocalStorage(what: string): string | null {
-      return (this.localStorageService.getToLocal(what))
+      return (this.localStorageService.getFromLocal(what))
     }
   
     setSoundMusicTimerValueToLocalStorage(what: string, event: Event) {

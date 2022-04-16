@@ -24,8 +24,8 @@ export class SettingsPageComponent implements OnInit {
   }
 
   getLangFromLocalStorage(): boolean {
-    this.lang = this.localStorageService.getToLocal('lang') ? this.localStorageService.getToLocal('lang')! : 'en'
-    return this.localStorageService.getToLocal('lang') === 'en'
+    this.lang = this.localStorageService.getFromLocal('lang') ? this.localStorageService.getFromLocal('lang')! : 'en'
+    return this.localStorageService.getFromLocal('lang') === 'en'
   }
   
 }

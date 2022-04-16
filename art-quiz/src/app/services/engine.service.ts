@@ -12,19 +12,19 @@ export class EngineService {
 
   setDefaultsLocal(how?: string) {
     if (how === 'firstLoad') {
-      if (!this.localStorageService.getToLocal('isSound')) {
+      if (!this.localStorageService.getFromLocal('isSound')) {
         this.localStorageService.setToLocal('isSound', 'true')
         this.localStorageService.setToLocal('soundVolume', '0.5')
       }
-      if (!this.localStorageService.getToLocal('isMusic')) {
+      if (!this.localStorageService.getFromLocal('isMusic')) {
         this.localStorageService.setToLocal('isMusic', 'false')
         this.localStorageService.setToLocal('musicVolume', '0.5')
       }
-      if (!this.localStorageService.getToLocal('timeGame')) {
+      if (!this.localStorageService.getFromLocal('timeGame')) {
         this.localStorageService.setToLocal('timeGame', 'true')
         this.localStorageService.setToLocal('timeSpeed', '30')
       }
-      if (!this.localStorageService.getToLocal('lang')) {
+      if (!this.localStorageService.getFromLocal('lang')) {
         this.localStorageService.setToLocal('lang', 'en')
       }
     } else {

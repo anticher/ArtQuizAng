@@ -67,26 +67,7 @@
     gap: 3.5vw;
   }
   &__item {
-    position: relative;
-    padding: 20px;
     width: 22vw;
     height: 22vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-size: cover;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
-    filter: grayscale(100%) brightness(60%);
-  }
-
-  &__item:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-  }
-
-  &__item:active {
-    transform: translateY(5px);
   }
 }

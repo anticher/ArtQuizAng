@@ -10,9 +10,8 @@
     </div>
     <div class="categories-page__main">
         <div class="categories-page__items">
-            <app-category-item class="categories-page__item" *ngFor="let item of items" [routerLink]="[item]"
-                [style.background-image]="'url(../../assets/images/square/' + item + '.jpg)'">
-            </app-category-item>
+            <app-categories-item class="categories-page__item" *ngFor="let item of items" [itemId]="item" [routerLink]="[item]">
+            </app-categories-item>
         </div>
     </div>
 </div>

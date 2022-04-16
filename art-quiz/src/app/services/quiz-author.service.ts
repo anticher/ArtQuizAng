@@ -3,6 +3,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { ImageInfo } from '../models/image-info.model';
 import { ImagesService } from './images.service';
 import { EngineService } from './engine.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class QuizAuthorService {
@@ -32,7 +33,10 @@ export class QuizAuthorService {
   public variantDisabledSubject: Subject<boolean> = new Subject<boolean>()
   public finalScoreSubject: Subject<string> = new Subject<string>()
 
-  constructor(public imagesService: ImagesService) { }
+  constructor(
+    private imagesService: ImagesService,
+    private localStorageService: LocalStorageService,
+    ) { }
 
   public setId(id: string): void {
     this.firstId = +id
@@ -72,6 +76,7 @@ export class QuizAuthorService {
   public nextQuestion(): void {
     if (this.lastId === this.id) {
       this.showFinalPop()
+      this.sendResultsToServer()
     } else {
       this.id++
       this.questionsStatusId++
@@ -142,5 +147,11 @@ export class QuizAuthorService {
     subcription.unsubscribe()
     questionsStatus[this.questionsStatusId] = 'incorrect'
     this.questionsStatusSubject.next(questionsStatus)
+  }
+
+  private sendResultsToServer(): void {
+    console.log(this.firstId)
+    console.log(this.answersArray)
+    this.localStorageService.setToLocal(`quiz_${this.firstId}`, this.questionsStatusSubject.value.join(' '))
   }
 }

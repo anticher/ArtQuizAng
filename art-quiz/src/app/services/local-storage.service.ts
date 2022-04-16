@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   constructor() { }
 
-  getToLocal(name: string): string {
+  getFromLocal(name: string): string {
     if (localStorage.getItem(name)) {
       return localStorage.getItem(name)!
     }
