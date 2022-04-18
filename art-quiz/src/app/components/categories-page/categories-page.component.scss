@@ -42,13 +42,18 @@
     background-repeat: no-repeat;
     background-image: url(../../../assets/images/svg/logoA.svg);
   }
-  &__home-button {
-    width: 12vmin;
-    height: 12vmin;
-    border-radius: 20px;
-    background-image: url(../../../assets/images/svg/homeBtnLogo.svg);
-    background-size: 90%;
-    background-position: center;
+  &__back-button {
+    width: 20vmin;
+    height: 8vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 3vmin;
+    line-height: 6vmin;
+    background-color: $white;
+    border-radius: 2vmin;
+    border: 2px solid $black;
   }
   &__main {
     padding-bottom: 40px;

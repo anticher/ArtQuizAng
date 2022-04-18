@@ -6,9 +6,7 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class EngineService {
 
-  constructor(private localStorageService: LocalStorageService) {
-    this.setDefaultsLocal('firstLoad')
-  }
+  constructor(private localStorageService: LocalStorageService) { }
 
   setDefaultsLocal(how?: string) {
     if (how === 'firstLoad') {

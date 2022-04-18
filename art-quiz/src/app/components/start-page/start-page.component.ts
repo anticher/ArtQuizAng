@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EngineService } from 'src/app/services/engine.service';
 
 @Component({
   selector: 'app-start-page',
@@ -7,11 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartPageComponent implements OnInit {
   
-  constructor(
-
-  ) { }
+  constructor(private engineService: EngineService) { }
 
   ngOnInit(): void {
-
+    this.engineService.setDefaultsLocal('firstLoad')
   }
 }

@@ -1,16 +1,16 @@
 <div class="categories-page">
     <div class="categories-page__header">
         <div class="categories-page__title">
-            {{'Categories' | language}}
+            {{pageTitle | language}}
         </div>
         <div class="categories-page__buttons">
-            <button [routerLink]="['']" class="categories-page__home-button button">
+            <button [routerLink]="['']" class="categories-page__back-button button">Back
             </button>
         </div>
     </div>
     <div class="categories-page__main">
         <div class="categories-page__items">
-            <app-categories-item class="categories-page__item" *ngFor="let item of items" [itemId]="item" [routerLink]="[item]">
+            <app-categories-item class="categories-page__item" *ngFor="let item of items" [itemId]="item" [isCategoriesItem]="isCategoryPage" [scoreItemStatus]="scoreItemsStatus[item % 10]" [routerLink]="[item]">
             </app-categories-item>
         </div>
     </div>

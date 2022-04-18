@@ -24,6 +24,18 @@ export class CategoriesService {
           imageNum += 10
         }
         break
+      case 'author-scores':
+        while (array.length < 10) {
+          array.push(imageNum)
+          imageNum += 1
+        }
+        break
+      case 'picture-scores':
+        while (array.length < 10) {
+          array.push(imageNum)
+          imageNum += 1
+        }
+        break
       default:
         while (array.length < 10) {
           array.push(imageNum)

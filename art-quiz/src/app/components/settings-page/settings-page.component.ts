@@ -7,23 +7,26 @@ import { LocalStorageService } from '../../services/local-storage.service';
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss']
 })
+
 export class SettingsPageComponent implements OnInit {
-  checkLang = true
-  lang = 'en'
+  public checkLang: boolean = true;
+
+  public lang: string = 'en';
+
   constructor(
     private engineService: EngineService,
     private localStorageService: LocalStorageService,
     ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.checkLang = this.getLangFromLocalStorage()
   }
 
-  settingsToDefaults() {
+  public settingsToDefaults(): void {
     this.engineService.setDefaultsLocal()
   }
 
-  getLangFromLocalStorage(): boolean {
+  public getLangFromLocalStorage(): boolean {
     this.lang = this.localStorageService.getFromLocal('lang') ? this.localStorageService.getFromLocal('lang')! : 'en'
     return this.localStorageService.getFromLocal('lang') === 'en'
   }

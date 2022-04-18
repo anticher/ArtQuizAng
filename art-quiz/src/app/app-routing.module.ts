@@ -16,6 +16,7 @@ const routes: Routes = [{
 { path: 'author-quizes/:id', component: QuizAuthorComponent },
 { path: 'picture-quizes', component: CategoriesPageComponent },
 { path: 'picture-quizes/:id', component: QuizPictureComponent },
+{ path: 'score-page', component: CategoriesPageComponent },
 // { path: 'products/:productId', component: ProductDetailsComponent },
 ];
 

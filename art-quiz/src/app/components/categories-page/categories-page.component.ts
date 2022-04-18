@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 
 @Component({
@@ -9,20 +10,31 @@ import { CategoriesService } from 'src/app/services/categories.service';
   styleUrls: ['./categories-page.component.scss']
 })
 export class CategoriesPageComponent implements OnInit {
-  items: number[] = []
+  public isCategoryPage: boolean = false;
+
+  public pageTitle: string = 'Categories'
+
+  public scoreItemsStatus: string[] = []
+
+  public items: number[] = []
   constructor(
     private categoriesService: CategoriesService,
-    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private localStorageService: LocalStorageService,
     ) {}
 
   ngOnInit(): void {
-    const categoryType = this.router.url.substring(1)
-    this.items = this.categoriesService.getCategoriesAndScoresImagesIndexes(categoryType)
-    // console.log(this.router.url)
-    // console.log(this.categoriesService.getCategoriesAndScoresImagesIndexes('author-quizes'))
-    // console.log(this.categoriesService.getCategoriesAndScoresImagesIndexes('picture-quizes'))
-    // console.log(this.categoriesService.getCategoriesAndScoresImagesIndexes('paintersScore', 1))
-    // console.log(this.categoriesService.getCategoriesAndScoresImagesIndexes('picturesScore', 40))
+    const categoryType = this.activateRoute.snapshot.routeConfig?.path
+    if (categoryType !== 'score-page') {
+      this.isCategoryPage = true
+    } else {
+      this.pageTitle = 'Scores'
+    }
+    const imageIndex = +this.activateRoute.snapshot.queryParams['id']
+    this.scoreItemsStatus = this.localStorageService.getFromLocal('quiz_' + imageIndex.toString()).split(' ')
+    if (categoryType) {
+      this.items = this.categoriesService.getCategoriesAndScoresImagesIndexes(categoryType, imageIndex)
+    }
   }
 
 }

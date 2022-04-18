@@ -14,19 +14,16 @@ export class SettingsPageMainComponent implements OnInit {
   constructor(private engineService: EngineService,
     private localStorageService: LocalStorageService,) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
       this.checkLang = this.getLangFromLocalStorage()
     }
   
-    settingsToDefaults() {
-      this.engineService.setDefaultsLocal()
-    }
-  
-    getLangFromLocalStorage(): boolean {
+    private getLangFromLocalStorage(): boolean {
       this.lang = this.localStorageService.getFromLocal('lang') ? this.localStorageService.getFromLocal('lang')! : 'en'
       return this.localStorageService.getFromLocal('lang') === 'en'
     }
-    setLangToLocalStorage() {
+
+    public setLangToLocalStorage() {
      if (this.getLangFromLocalStorage()) {
       this.localStorageService.setToLocal('lang', 'ru')
      } else {
@@ -35,11 +32,11 @@ export class SettingsPageMainComponent implements OnInit {
      }
     }
   
-    getSoundMusicTimerStatusFromLocalStorage(what: string): boolean | null {
+    public getSoundMusicTimerStatusFromLocalStorage(what: string): boolean | null {
       return this.localStorageService.getFromLocal(what) === 'true'
     }
   
-    setSoundMusicTimerStatusToLocalStorage(what: string) {
+    public setSoundMusicTimerStatusToLocalStorage(what: string) {
       if (this.getSoundMusicTimerStatusFromLocalStorage(what)) {
         this.localStorageService.setToLocal(what, 'false')
        } else {
@@ -47,11 +44,11 @@ export class SettingsPageMainComponent implements OnInit {
        }
     }
   
-    getSoundMusicTimerValueFromLocalStorage(what: string): string | null {
+    public getSoundMusicTimerValueFromLocalStorage(what: string): string | null {
       return (this.localStorageService.getFromLocal(what))
     }
   
-    setSoundMusicTimerValueToLocalStorage(what: string, event: Event) {
+    public setSoundMusicTimerValueToLocalStorage(what: string, event: Event) {
       const valueStr = ((<HTMLInputElement>event.target).value).toString()
       this.localStorageService.setToLocal(what, valueStr)
     }
