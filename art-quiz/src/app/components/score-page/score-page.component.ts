@@ -13,7 +13,7 @@ export class ScorePageComponent implements OnInit {
 
   public scoreItemsStatus: string[] = []
 
-  public items: any = []
+  public items: number[] = []
   constructor(
     private activatedRoute: ActivatedRoute,
     private categoriesService: CategoriesService,
