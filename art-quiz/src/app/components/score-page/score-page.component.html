@@ -1,0 +1,17 @@
+<div class="score-page">
+    <div class="score-page__header">
+        <div class="score-page__title">
+            {{pageTitle | language}}
+        </div>
+        <div class="score-page__buttons">
+            <button [routerLink]="['']" class="score-page__back-button button">Back
+            </button>
+        </div>
+    </div>
+    <div class="score-page__main">
+        <div class="score-page__items">
+            <app-score-item class="score-page__item" *ngFor="let item of items" [itemId]="item" [scoreItemStatus]="scoreItemsStatus[item % 10]">
+            </app-score-item>
+        </div>
+    </div>
+</div>

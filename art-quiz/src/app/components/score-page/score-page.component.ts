@@ -3,31 +3,29 @@ import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
-
 @Component({
-  selector: 'app-categories-page',
-  templateUrl: './categories-page.component.html',
-  styleUrls: ['./categories-page.component.scss']
+  selector: 'app-score-page',
+  templateUrl: './score-page.component.html',
+  styleUrls: ['./score-page.component.scss']
 })
-export class CategoriesPageComponent implements OnInit {
-  public pageTitle: string = 'Categories'
+export class ScorePageComponent implements OnInit {
+  public pageTitle: string = 'Score'
 
   public scoreItemsStatus: string[] = []
 
-  public items: number[] = []
+  public items: any = []
   constructor(
-    private categoriesService: CategoriesService,
     private activatedRoute: ActivatedRoute,
-    private localStorageService: LocalStorageService,
-    ) {}
+    private categoriesService: CategoriesService,
+    private localStorageService: LocalStorageService
+    ) { }
 
   ngOnInit(): void {
     const categoryType = this.activatedRoute.snapshot.routeConfig?.path
-    const imageIndex = +this.activatedRoute.snapshot.queryParams['id']
+    const imageIndex = +this.activatedRoute.snapshot.params['id']
     this.scoreItemsStatus = this.localStorageService.getFromLocal('quiz_' + imageIndex.toString()).split(' ')
     if (categoryType) {
       this.items = this.categoriesService.getCategoriesAndScoresImagesIndexes(categoryType, imageIndex)
     }
   }
-
 }

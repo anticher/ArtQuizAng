@@ -5,6 +5,7 @@ import { StartPageComponent } from './components/start-page/start-page.component
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { QuizAuthorComponent } from './components/quiz-author/quiz-author.component';
 import { QuizPictureComponent } from './components/quiz-picture/quiz-picture.component';
+import { ScorePageComponent } from './components/score-page/score-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,10 +14,12 @@ const routes: Routes = [{
 { path: 'settings', component: SettingsPageComponent },
 // { path: 'categories', component: CategoriesPageComponent },
 { path: 'author-quizes', component: CategoriesPageComponent },
+{ path: 'author-quizes/score-page/:id', component: ScorePageComponent },
 { path: 'author-quizes/:id', component: QuizAuthorComponent },
+
 { path: 'picture-quizes', component: CategoriesPageComponent },
+{ path: 'picture-quizes/score-page/:id', component: ScorePageComponent },
 { path: 'picture-quizes/:id', component: QuizPictureComponent },
-{ path: 'score-page', component: CategoriesPageComponent },
 // { path: 'products/:productId', component: ProductDetailsComponent },
 ];
 

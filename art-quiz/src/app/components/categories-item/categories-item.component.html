@@ -1,3 +1,7 @@
-<div class="categories-item" [ngClass]="{'categories-item_first-play': !isPlayedBefore, 'categories-item_incorrect': scoreItemStatus === 'incorrect'}" [style.background-image]="'url(../../assets/images/square/' + this.itemId + '.jpg)'">
-    <button *ngIf="isPlayedBefore && isCategoriesItem" class="categories-item__button" (click)="goToScorePage()">{{score}} / 10</button>
+<div class="categories-item" [ngClass]="{
+    'categories-item_first-play': !isPlayedBefore,
+    'categories-item_incorrect': scoreItemStatus === 'incorrect'
+}" [style.background-image]="'url(../../assets/images/square/' + this.itemId + '.jpg)'">
+    <button *ngIf="isPlayedBefore" class="categories-item__button"
+    [routerLink]="['score-page/' + this.itemId]">{{score}} / 10</button>
 </div>

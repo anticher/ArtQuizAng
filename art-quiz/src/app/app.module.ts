@@ -14,6 +14,8 @@ import { LanguagePipe } from './pipes/language.pipe';
 import { FinalPopComponent } from './components/final-pop/final-pop.component';
 import { QuizPictureComponent } from './components/quiz-picture/quiz-picture.component';
 import { CategoriesItemComponent } from './components/categories-item/categories-item.component';
+import { ScorePageComponent } from './components/score-page/score-page.component';
+import { ScoreItemComponent } from './components/score-item/score-item.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { CategoriesItemComponent } from './components/categories-item/categories
     FinalPopComponent,
     QuizPictureComponent,
     CategoriesItemComponent,
+    ScorePageComponent,
+    ScoreItemComponent,
   ],
   imports: [
     BrowserModule,
