@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ImageInfo } from 'src/app/models/image-info.model';
 
 @Component({
   selector: 'app-score-item',
@@ -10,13 +11,23 @@ export class ScoreItemComponent implements OnInit {
 
   @Input() scoreItemStatus: string = '';
 
+  @Input() imageInfo!: ImageInfo
+
   public isCorrect: boolean = false
+
+  public isItemInfoVisible: boolean = false
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if(this.scoreItemStatus === 'correct') {
       this.isCorrect = true;
+    }
+  }
+
+  public toggleItemInfo(): void {
+    if (this.isCorrect) {
+      this.isItemInfoVisible = !this.isItemInfoVisible
     }
   }
 }

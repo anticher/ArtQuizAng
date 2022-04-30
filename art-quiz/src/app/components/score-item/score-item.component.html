@@ -1,2 +1,13 @@
-<div class="score-item" [ngClass]="{'score-item_incorrect': !isCorrect}" [style.background-image]="'url(../../assets/images/square/' + this.itemId + '.jpg)'">
+<div class="score-item" [ngClass]="{'score-item_correct': isCorrect, 'score-item_incorrect': !isCorrect}">
+    <div *ngIf="!isItemInfoVisible;else itemInfo" class="score-item__image" 
+        [style.background-image]="'url(../../assets/images/square/' + this.itemId + '.jpg)'" (click)="toggleItemInfo()">
+    </div>
+    <ng-template #itemInfo>
+        <div class="score-item__info"
+        (click)="toggleItemInfo()">
+            <p class="score-item__author">{{imageInfo.author}}</p>
+            <p class="score-item__name">{{imageInfo.name}}</p>
+            <p class="score-item__year">{{imageInfo.year}}</p>
+        </div>
+    </ng-template>
 </div>

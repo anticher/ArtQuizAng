@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface imageInfoItem {
-  author: string,
-  name: string,
-  year: string,
-  imageNum: string
-}
+import { ImageInfo } from '../models/image-info.model';
 
 interface imageInfoResponse {
-  imagesInfo: imageInfoItem[];
+  imagesInfo: ImageInfo[];
 }
 
 @Injectable({
@@ -22,8 +16,8 @@ export class ImagesService {
   constructor(private http: HttpClient) {
   
   }
-  getImagesInfo(): Observable<any> {
-    return this.http.get('../assets/images/imagesInfo.json')
+  getImagesInfo(): Observable<ImageInfo[]> {
+    return this.http.get<ImageInfo[]>('../assets/images/imagesInfo.json')
   }
 
   getImageSquare(id: string): Observable<Object> {
