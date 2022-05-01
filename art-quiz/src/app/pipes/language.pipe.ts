@@ -17,7 +17,7 @@ export class LanguagePipe implements PipeTransform {
     'Music volume': 'Громкость музыки',
     'Time game': 'Игра на время',
     'Categories': 'Категории',
-    'Scores': 'Результаты',
+    'Score': 'Результаты',
     'Who is the author of this picture?': 'Кто автор этой картины?',
     'What picture was painted by': 'Какую картину написал',
     'Next': 'Далее',

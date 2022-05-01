@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/services/audio.service';
 import { EngineService } from 'src/app/services/engine.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -11,8 +12,11 @@ export class SettingsPageMainComponent implements OnInit {
   checkLang = true
   lang = 'en'
 
-  constructor(private engineService: EngineService,
-    private localStorageService: LocalStorageService,) { }
+  constructor(
+    private engineService: EngineService,
+    private localStorageService: LocalStorageService,
+    private audioService: AudioService,
+    ) { }
 
     public ngOnInit(): void {
       this.checkLang = this.getLangFromLocalStorage()
@@ -32,25 +36,59 @@ export class SettingsPageMainComponent implements OnInit {
      }
     }
   
-    public getSoundMusicTimerStatusFromLocalStorage(what: string): boolean | null {
-      return this.localStorageService.getFromLocal(what) === 'true'
+    public setSoundStatus(): void {
+      this.engineService.setSoundMusicTimerStatusToLocalStorage('isSound')
     }
-  
-    public setSoundMusicTimerStatusToLocalStorage(what: string) {
-      if (this.getSoundMusicTimerStatusFromLocalStorage(what)) {
-        this.localStorageService.setToLocal(what, 'false')
-       } else {
-        this.localStorageService.setToLocal(what, 'true')
-       }
+    
+    public setMusicStatus(): void {
+      this.engineService.setSoundMusicTimerStatusToLocalStorage('isMusic')
+      if(!this.engineService.getSoundMusicTimerStatusFromLocalStorage('isMusic')) {
+        this.audioService.stopMainMusic()
+      } else {
+        this.audioService.playMainMusic()
+      }
     }
-  
-    public getSoundMusicTimerValueFromLocalStorage(what: string): string | null {
-      return (this.localStorageService.getFromLocal(what))
+
+    public setTimerStatus(): void {
+      this.engineService.setSoundMusicTimerStatusToLocalStorage('timeGame')
     }
-  
-    public setSoundMusicTimerValueToLocalStorage(what: string, event: Event) {
-      const valueStr = ((<HTMLInputElement>event.target).value).toString()
-      this.localStorageService.setToLocal(what, valueStr)
+
+    public getSoundStatus(): boolean {
+      return this.engineService.getSoundMusicTimerStatusFromLocalStorage('isSound')
+    }
+    public getMusicStatus(): boolean {
+      return this.engineService.getSoundMusicTimerStatusFromLocalStorage('isMusic')
+    }
+    public getTimerStatus(): boolean {
+      return this.engineService.getSoundMusicTimerStatusFromLocalStorage('timeGame')
+    }
+
+    public setSoundValue(event: Event): void {
+      this.engineService.setSoundMusicTimerValueToLocalStorage('soundVolume', event)
+    }
+
+    public setMusicValue(event: Event): void {
+      this.engineService.setSoundMusicTimerValueToLocalStorage('musicVolume', event)
+      this.audioService.changeMusicVolume(+((<HTMLInputElement>event.target).value))
+    }
+
+    public setTimerValue(event: Event): void {
+      this.engineService.setSoundMusicTimerValueToLocalStorage('timeSpeed', event)
+    }
+    
+    public getSoundValue(): string {
+      const result = this.engineService.getSoundMusicTimerValueFromLocalStorage('soundVolume')
+      return result ? result : ''
+    }
+
+    public getMusicValue(): string {
+      const result = this.engineService.getSoundMusicTimerValueFromLocalStorage('musicVolume')
+      return result ? result : ''
+    }
+
+    public getTimerValue(): string {
+      const result = this.engineService.getSoundMusicTimerValueFromLocalStorage('timeSpeed')
+      return result ? result : ''
     }
 
 }

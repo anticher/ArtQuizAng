@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/services/audio.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 const numberOfQuestions = 10

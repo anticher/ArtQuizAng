@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AudioService } from 'src/app/services/audio.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -19,6 +20,7 @@ export class CategoriesPageComponent implements OnInit {
     private categoriesService: CategoriesService,
     private activatedRoute: ActivatedRoute,
     private localStorageService: LocalStorageService,
+    private audioService: AudioService,
     ) {}
 
   ngOnInit(): void {
@@ -28,6 +30,7 @@ export class CategoriesPageComponent implements OnInit {
     if (categoryType) {
       this.items = this.categoriesService.getCategoriesAndScoresImagesIndexes(categoryType, imageIndex)
     }
+    // this.audioService.playMainMusic()
   }
 
 }

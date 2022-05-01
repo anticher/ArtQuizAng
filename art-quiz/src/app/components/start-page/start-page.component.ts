@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/services/audio.service';
 import { EngineService } from 'src/app/services/engine.service';
 
 @Component({
@@ -8,9 +9,16 @@ import { EngineService } from 'src/app/services/engine.service';
 })
 export class StartPageComponent implements OnInit {
   
-  constructor(private engineService: EngineService) { }
+  constructor(
+    private engineService: EngineService,
+    private audioService: AudioService,
+    ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.engineService.setDefaultsLocal('firstLoad')
   }
+
+  // public playMusic(): void {
+  //   this.audioService.playMainMusic()
+  // }
 }

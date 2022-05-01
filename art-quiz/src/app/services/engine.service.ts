@@ -12,11 +12,11 @@ export class EngineService {
     if (how === 'firstLoad') {
       if (!this.localStorageService.getFromLocal('isSound')) {
         this.localStorageService.setToLocal('isSound', 'true')
-        this.localStorageService.setToLocal('soundVolume', '0.5')
+        this.localStorageService.setToLocal('soundVolume', '50')
       }
       if (!this.localStorageService.getFromLocal('isMusic')) {
         this.localStorageService.setToLocal('isMusic', 'false')
-        this.localStorageService.setToLocal('musicVolume', '0.5')
+        this.localStorageService.setToLocal('musicVolume', '50')
       }
       if (!this.localStorageService.getFromLocal('timeGame')) {
         this.localStorageService.setToLocal('timeGame', 'true')
@@ -28,14 +28,33 @@ export class EngineService {
     } else {
       this.localStorageService.setToLocal('lang', 'en')
       this.localStorageService.setToLocal('isSound', 'true')
-      this.localStorageService.setToLocal('soundVolume', '0.5')
+      this.localStorageService.setToLocal('soundVolume', '50')
       this.localStorageService.setToLocal('isMusic', 'false')
-      this.localStorageService.setToLocal('musicVolume', '0.5')
+      this.localStorageService.setToLocal('musicVolume', '50')
       this.localStorageService.setToLocal('timeGame', 'true')
       this.localStorageService.setToLocal('timeSpeed', '30')
-      // createOrDeleteAudio()
-      // settingsCreateActions()
     }
+  }
+
+  public getSoundMusicTimerStatusFromLocalStorage(what: string): boolean {
+    return this.localStorageService.getFromLocal(what) === 'true'
+  }
+
+  public setSoundMusicTimerStatusToLocalStorage(what: string) {
+    if (this.getSoundMusicTimerStatusFromLocalStorage(what)) {
+      this.localStorageService.setToLocal(what, 'false')
+     } else {
+      this.localStorageService.setToLocal(what, 'true')
+     }
+  }
+
+  public getSoundMusicTimerValueFromLocalStorage(what: string): string | null {
+    return (this.localStorageService.getFromLocal(what))
+  }
+
+  public setSoundMusicTimerValueToLocalStorage(what: string, event: Event) {
+    const valueStr = ((<HTMLInputElement>event.target).value).toString()
+    this.localStorageService.setToLocal(what, valueStr)
   }
   
   public static shuffleArray(array: any[]) {

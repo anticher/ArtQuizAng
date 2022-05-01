@@ -16,6 +16,7 @@ import { QuizPictureComponent } from './components/quiz-picture/quiz-picture.com
 import { CategoriesItemComponent } from './components/categories-item/categories-item.component';
 import { ScorePageComponent } from './components/score-page/score-page.component';
 import { ScoreItemComponent } from './components/score-item/score-item.component';
+import { AudioComponent } from './components/audio/audio.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ScoreItemComponent } from './components/score-item/score-item.component
     CategoriesItemComponent,
     ScorePageComponent,
     ScoreItemComponent,
+    AudioComponent,
   ],
   imports: [
     BrowserModule,

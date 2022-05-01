@@ -12,7 +12,6 @@ const routes: Routes = [{
   component: StartPageComponent,
 },
 { path: 'settings', component: SettingsPageComponent },
-// { path: 'categories', component: CategoriesPageComponent },
 { path: 'author-quizes', component: CategoriesPageComponent },
 { path: 'author-quizes/score-page/:id', component: ScorePageComponent },
 { path: 'author-quizes/:id', component: QuizAuthorComponent },
@@ -20,7 +19,6 @@ const routes: Routes = [{
 { path: 'picture-quizes', component: CategoriesPageComponent },
 { path: 'picture-quizes/score-page/:id', component: ScorePageComponent },
 { path: 'picture-quizes/:id', component: QuizPictureComponent },
-// { path: 'products/:productId', component: ProductDetailsComponent },
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { ImageInfo } from '../models/image-info.model';
 import { ImagesService } from './images.service';
 import { EngineService } from './engine.service';
 import { LocalStorageService } from './local-storage.service';
+import { AudioService } from './audio.service';
 
 
 @Injectable()
@@ -50,6 +51,7 @@ export class QuizPictureService {
   constructor(
     private imagesService: ImagesService,
     private localStorageService: LocalStorageService,
+    private audioService: AudioService,
     ) { }
 
   public setId(id: string): void {
@@ -128,6 +130,7 @@ export class QuizPictureService {
   }
 
   private showFinalPop(): void {
+    this.audioService.playFinalSound()
     let score = 0
     const subcription = this.questionsStatusSubject.subscribe((value) => {
       value.forEach((status) => {
@@ -145,6 +148,7 @@ export class QuizPictureService {
   }
 
   private onCorrectAnswer(): void {
+    this.audioService.playCorrectSound()
     this.target.classList.add('choose-picture-page__item-green')
     let questionsStatus = []
     const subcription = this.questionsStatusSubject.subscribe((value) => {
@@ -156,6 +160,7 @@ export class QuizPictureService {
   }
 
   private onIncorrectAnswer(): void {
+    this.audioService.playIncorrectSound()
     this.target.classList.add('choose-picture-page__item-red')
     let questionsStatus = []
     const subcription = this.questionsStatusSubject.subscribe((value) => {
