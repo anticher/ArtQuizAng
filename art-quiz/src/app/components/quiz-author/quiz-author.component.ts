@@ -3,12 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizAuthorService } from 'src/app/services/quiz-author.service';
 import { ImageInfo } from 'src/app/models/image-info.model';
 import { Subscription } from 'rxjs';
+import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
   selector: 'app-author-page',
   templateUrl: './quiz-author.component.html',
   styleUrls: ['./quiz-author.component.scss'],
-  providers: [QuizAuthorService]
+  providers: [QuizAuthorService, TimerService]
 })
 export class QuizAuthorComponent implements OnInit, OnDestroy {
   public target!: HTMLInputElement
@@ -23,14 +24,19 @@ export class QuizAuthorComponent implements OnInit, OnDestroy {
 
   public variantDisabled: boolean = false;
 
+  public timerDisabled: boolean = false;
+
   public finalScore: string = ''
+
+  public timerValue: number | string = ''
 
   public subscribtions: Subscription = new Subscription
 
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private quizAuthorService: QuizAuthorService
+    private quizAuthorService: QuizAuthorService,
+    private timerService: TimerService
   ) {}
 
   public ngOnInit(): void {
@@ -52,6 +58,17 @@ export class QuizAuthorComponent implements OnInit, OnDestroy {
     }))
     this.subscribtions.add(this.quizAuthorService.variantDisabledSubject.subscribe((value) => {
       this.variantDisabled = value
+      this.timerDisabled = value
+    }))
+    this.subscribtions.add(this.timerService.timerValue$.subscribe((value) => {
+      if (value === 999) {
+        this.timerValue = ''
+      } else {
+        this.timerValue = value
+      }
+      if (value === 0) {
+        this.quizAuthorService.onTimerEnds();
+      }
     }))
   }
 
@@ -72,6 +89,10 @@ export class QuizAuthorComponent implements OnInit, OnDestroy {
 
   public returnToCategories(): void {
     this.router.navigate(['author-quizes'])
+  }
+
+  public pauseTimer(): void {
+    this.timerService.pauseTimer()
   }
 
   public ngOnDestroy(): void {

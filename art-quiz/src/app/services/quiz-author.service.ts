@@ -5,6 +5,7 @@ import { ImagesService } from './images.service';
 import { EngineService } from './engine.service';
 import { LocalStorageService } from './local-storage.service';
 import { AudioService } from './audio.service';
+import { TimerService } from './timer.service';
 
 @Injectable()
 export class QuizAuthorService {
@@ -38,6 +39,7 @@ export class QuizAuthorService {
     private imagesService: ImagesService,
     private localStorageService: LocalStorageService,
     private audioService: AudioService,
+    private timerService: TimerService
   ) { }
 
   public setId(id: string): void {
@@ -55,6 +57,11 @@ export class QuizAuthorService {
   }
 
   private questionInit(): void {
+    if(this.localStorageService.getFromLocal('timeGame') === 'true') {
+      const timerValue = +this.localStorageService.getFromLocal('timeSpeed')
+      this.timerService.setTimerValue(timerValue)
+      this.timerService.startTimer()
+    }
     this.imageInfoSubject.next(this.imagesInfo[this.id])
     this.correctAnswer = this.imagesInfo[this.id].author
     this.answersArray.push(this.correctAnswer)
@@ -70,8 +77,10 @@ export class QuizAuthorService {
   }
 
   private deletePreviousQuestion(): void {
-    this.target.classList.remove('choose-author-page__answer-green')
-    this.target.classList.remove('choose-author-page__answer-red')
+    if (this.target) {
+      this.target.classList.remove('choose-author-page__answer-green')
+      this.target.classList.remove('choose-author-page__answer-red')
+    }
     this.answersArray = []
   }
 
@@ -108,7 +117,21 @@ export class QuizAuthorService {
     }
   }
 
+  public onTimerEnds(): void {
+    this.showPop()
+    this.variantDisabledSubject.next(true);
+    this.audioService.playIncorrectSound()
+    let questionsStatus = []
+    const subcription = this.questionsStatusSubject.subscribe((value) => {
+      questionsStatus = [...value]
+    })
+    subcription.unsubscribe()
+    questionsStatus[this.questionsStatusId] = 'incorrect'
+    this.questionsStatusSubject.next(questionsStatus)
+  }
+
   private showPop(): void {
+    this.timerService.stopTimer()
     this.showPictureSubject.next(false);
   }
 

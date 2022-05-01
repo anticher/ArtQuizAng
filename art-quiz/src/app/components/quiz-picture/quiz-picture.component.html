@@ -4,7 +4,9 @@
         <div class="choose-picture-page__title">
             {{'What picture was painted by' | language}} <span class="choose-picture-page__title-author">{{imageInfo.author}}</span>
         </div>
-        <button class="choose-picture-page__timer-button"></button>
+        <button class="choose-picture-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
+            {{timerValue}}
+        </button>
     </div>
     <div class="choose-picture-page__main">
         <div *ngIf="showPictures;else showPop" class="choose-picture-page__items">

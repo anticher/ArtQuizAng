@@ -4,7 +4,8 @@
         <h2 class="choose-author-page__title">
             {{'Who is the author of this picture?' | language}}
         </h2>
-        <button class="choose-author-page__timer-button">
+        <button class="choose-author-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
+            {{timerValue}}
         </button>
     </div>
     <div class="choose-author-page__main">

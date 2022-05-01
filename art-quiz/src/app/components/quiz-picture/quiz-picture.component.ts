@@ -3,13 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ImageInfo } from 'src/app/models/image-info.model';
 import { QuizPictureService } from 'src/app/services/quiz-picture.service';
+import { TimerService } from 'src/app/services/timer.service';
 
 
 @Component({
   selector: 'app-quiz-picture',
   templateUrl: './quiz-picture.component.html',
   styleUrls: ['./quiz-picture.component.scss'],
-  providers: [QuizPictureService]
+  providers: [QuizPictureService, TimerService]
 })
 export class QuizPictureComponent implements OnInit, OnDestroy {
   public target!: HTMLInputElement
@@ -23,15 +24,20 @@ export class QuizPictureComponent implements OnInit, OnDestroy {
   public showPictures: boolean = true;
 
   public variantDisabled: boolean = false;
+
+  public timerDisabled: boolean = false;
   
   public finalScore: string = ''
+
+  public timerValue: number | string = ''
 
   public subscribtions: Subscription = new Subscription
 
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private quizPictureService: QuizPictureService
+    private quizPictureService: QuizPictureService,
+    private timerService: TimerService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +59,17 @@ export class QuizPictureComponent implements OnInit, OnDestroy {
     }))
     this.subscribtions.add(this.quizPictureService.variantDisabledSubject.subscribe((value) => {
       this.variantDisabled = value
+      this.timerDisabled = value
+    }))
+    this.subscribtions.add(this.timerService.timerValue$.subscribe((value) => {
+      if (value === 999) {
+        this.timerValue = ''
+      } else {
+        this.timerValue = value
+      }
+      if (value === 0) {
+        this.quizPictureService.onTimerEnds();
+      }
     }))
   }
 
@@ -73,6 +90,10 @@ export class QuizPictureComponent implements OnInit, OnDestroy {
 
   public returnToCategories(): void {
     this.router.navigate(['picture-quizes'])
+  }
+
+  public pauseTimer(): void {
+    this.timerService.pauseTimer()
   }
 
   public ngOnDestroy(): void {
