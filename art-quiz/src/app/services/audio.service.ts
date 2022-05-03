@@ -11,10 +11,13 @@ export class AudioService {
   private finalAudio: HTMLAudioElement = new Audio('../../assets/sounds/click.mp3');
   private mainMusic: HTMLAudioElement = new Audio('../../assets/sounds/backMusic.mp3');
 
-
   constructor(private localStorageService: LocalStorageService) {}
 
   public playMainMusic(): void {
+    this.mainMusic.onended = () => {
+      this.stopMainMusic()
+      this. playMainMusic()
+    }
     if (this.localStorageService.getFromLocal('isMusic') === 'true') {
       this.mainMusic.volume = +this.localStorageService.getFromLocal('musicVolume') / 100;
       this.mainMusic.play();
@@ -24,6 +27,7 @@ export class AudioService {
   }
 
   public stopMainMusic(): void {
+    this.mainMusic.onended = null
     this.stopSound(this.mainMusic)
   }
 
