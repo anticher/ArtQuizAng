@@ -1,9 +1,9 @@
 <div class="start-page">
-  <div class="start-page__header">
+  <header class="start-page__header">
     <div class="start-page__logo">
     </div>
-  </div>
-  <div class="start-page__main">
+  </header>
+  <main class="start-page__main">
     <div class="start-page__item">
       <button [routerLink]="['/author-quizes']" class="start-page__author">
       </button>
@@ -12,18 +12,18 @@
       </div>
     </div>
     <div class="start-page__item">
-      <button  [routerLink]="['/picture-quizes']" class="start-page__picture">
+      <button [routerLink]="['/picture-quizes']" class="start-page__picture">
       </button>
       <div class="start-page__item-descr">
         {{'Picture quiz' | language}}
       </div>
     </div>
-  </div>
-  <div class="start-page__footer">
+  </main>
+  <footer class="start-page__footer">
     <div class="start-page__buttons">
       <button [routerLink]="['/settings']" class="start-page__settings-button">
         {{'Settings' | language}}
       </button>
     </div>
-  </div>
+  </footer>
 </div>

@@ -21,6 +21,7 @@ $black: #000000;
 body {
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   font-family: "Prompt", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
@@ -28,41 +29,4 @@ body {
   background: linear-gradient(0deg, rgba(40, 54, 85, 1) 0%, rgba(77, 100, 141, 1) 35%, rgba(208, 225, 249, 1) 100%);
   background-size: cover;
   overflow: hidden;
-}
-
-.main {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: scroll;
-  transition: all 0.3s ease-out;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.button {
-  position: relative;
-  width: 210px;
-  height: 70px;
-  font-size: 24px;
-  line-height: 29px;
-  text-transform: uppercase;
-  border-radius: 10px;
-  background-color: $main4;
-  background-repeat: no-repeat;
-  background-position-x: 10px;
-  background-position-y: center;
-  background-size: 40px;
-  color: $main;
-}
-
-.hidden {
-  display: none;
-}
-
-.hiding {
-  opacity: 0;
-  visibility: hidden;
 }

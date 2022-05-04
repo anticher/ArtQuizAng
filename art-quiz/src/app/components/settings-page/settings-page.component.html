@@ -7,12 +7,12 @@
     <app-settings-page-main></app-settings-page-main>
     <div class="settings-page__footer">
         <div class="settings-page__button-wrapper">
-            <button [routerLink]="['']" class="settings-page__save-button button button_center button_white">
+            <button [routerLink]="['']" class="settings-page__save-button">
                 {{'Back' | language}}
             </button>
         </div>
         <div class="settings-page__button_wrapper">
-            <button [routerLink]="['']" (click)="settingsToDefaults()" class="settings-page__defaults-button button button_center button_white">
+            <button [routerLink]="['']" (click)="settingsToDefaults()" class="settings-page__defaults-button">
                 {{'Defaults' | language}}
             </button>
         </div>
