@@ -6,22 +6,20 @@
 }
 
 .start-page {
-    padding-bottom: 30px;
+    padding: 20px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    overflow-x: hidden;
     &__header {
         width: 100%;
         display: flex;
         justify-content: center;
     }
     &__logo {
-        margin-top: 10px;
         width: 160px;
         height: 160px;
         background-image: url("../../../assets/images/svg/logo.svg");
@@ -32,10 +30,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 20px;
     }
 
     &__item {
-        margin: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -92,17 +90,12 @@
     }
 }
 
-@media (max-height: 750px) {
+@media (max-height: 767px), (max-width: 767px) {
     .start-page {
         &__logo {
             width: 120px;
             height: 120px;
         }
-    }
-}
-
-@media (max-height: 700px), (max-width: 700px) {
-    .start-page {
         &__author,
         &__picture {
             width: 200px;
@@ -119,26 +112,17 @@
     }
 }
 
-@media (max-height: 540px) {
+@media (max-height: 480px), (max-width: 480px) {
     .start-page {
-        padding-bottom: 14px;
-        gap: 0;
-    }
-}
-
-@media (max-width: 500px) {
-    .start-page {
-        &__main {
-            flex-direction: column;
-        }
-    }
-}
-
-@media (max-height: 470px), (max-width: 400px) {
-    .start-page {
+        padding: 10px;
         &__logo {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
+        }
+        &__author,
+        &__picture {
+            width: 180px;
+            height: 180px;
         }
         &__item {
             gap: 5px;
@@ -156,32 +140,23 @@
     }
 }
 
-@media (max-height: 430px), (max-width: 380px) {
+@media (max-width: 470px) {
     .start-page {
-        &__author,
-        &__picture {
-            width: 160px;
-            height: 160px;
+        &__main {
+            flex-direction: column;
         }
     }
 }
 
-@media (max-height: 400px), (max-width: 380px) {
+@media (max-height: 400px), (max-width: 400px) {
     .start-page {
-        padding-bottom: 10px;
-    }
-}
-
-@media (max-height: 370px) {
-    .start-page {
+        gap: 10px;
         &__logo {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
         }
-        &__author,
-        &__picture {
-            width: 120px;
-            height: 120px;
+        &__item {
+            margin: 2px 20px;
         }
         &__item-descr {
             font-size: 14px;
@@ -190,14 +165,6 @@
         &__settings-button {
             width: 120px;
             height: 40px;
-        }
-    }
-}
-
-@media (max-height: 320px) {
-    .start-page {
-        &__item {
-            margin: 2px 20px;
         }
     }
 }

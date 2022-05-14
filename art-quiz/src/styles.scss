@@ -20,7 +20,6 @@ $black: #000000;
 
 body {
   width: 100vw;
-  height: 100vh;
   min-height: 100vh;
   font-family: "Prompt", sans-serif;
   font-weight: 400;
@@ -28,5 +27,4 @@ body {
   color: $main;
   background: linear-gradient(0deg, rgba(40, 54, 85, 1) 0%, rgba(77, 100, 141, 1) 35%, rgba(208, 225, 249, 1) 100%);
   background-size: cover;
-  overflow: hidden;
 }

@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 .categories-page {
-  padding: 20px 0 60px;
+  padding: 20px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,60 +10,133 @@
   align-items: center;
   gap: 30px;
   &__header {
-    width: 80vw;
+    width: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6vmin;
   }
   &__buttons {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   &__title {
-    padding-left: 16vmin;
-    letter-spacing: 3px;
-    font-size: 8vmin;
-    line-height: 15vmin;
+    padding-left: 90px;
+    letter-spacing: 2px;
+    font-size: 48px;
+    line-height: 90px;
     font-weight: 700;
-    background-size: 15vmin;
-    background-position: left 50%;
+    background-size: 80px 80px;
+    background-position: left 30%;
     background-repeat: no-repeat;
     background-image: url(../../../assets/images/svg/logoA.svg);
   }
   &__back-button {
-    width: 20vmin;
-    height: 8vmin;
+    width: 210px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
-    font-size: 3vmin;
-    line-height: 6vmin;
+    font-size: 24px;
+    line-height: 29px;
     background-color: $white;
-    border-radius: 2vmin;
+    border-radius: 10px;
     border: 2px solid $black;
   }
   &__main {
     padding-bottom: 40px;
-    width: 90vw;
+    width: 1024px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   &__items {
-    padding: 3.5vw;
+    padding: 30px;
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
+    width: 100%;
     background-color: $main4;
     border-radius: 20px;
-    gap: 3.5vw;
+    gap: 30px;
   }
   &__item {
-    width: 22vw;
-    height: 22vw;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .categories-page {
+    &__title {
+      font-size: 40px;
+    }
+    &__buttons {
+      justify-content: center;
+    }
+    &__header {
+      width: 690px;
+    }
+    &__main {
+      width: 690px;
+    }
+  }
+}
+
+@media (max-width: 730px) {
+  .categories-page {
+    &__header {
+      width: 360px;
+    }
+    &__main {
+      width: 360px;
+    }
+  }
+}
+
+@media (max-width: 410px) {
+  .categories-page {
+    &__header {
+      width: 90%;
+    }
+    &__title {
+      padding-left: 64px;
+      font-size: 40px;
+      line-height: 64px;
+      background-size: 60px 60px;
+    }
+    &__buttons {
+      margin-top: 20px;
+    }
+    &__back-button {
+      width: 150px;
+      height: 50px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+    &__main {
+      width: auto;
+    }
+    &__items {
+      padding: 0;
+      background-color: transparent;
+    }
+    &__item {
+      margin: auto;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .categories-page {
+    &__title {
+      font-size: 24px;
+    }
+    &__item {
+      width: 260px;
+      height: 260px;
+    }
   }
 }

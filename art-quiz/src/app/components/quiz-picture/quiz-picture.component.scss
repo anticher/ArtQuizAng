@@ -2,39 +2,47 @@
 
 .choose-picture-page {
     position: relative;
-    padding: 10px 0;
+    padding: 20px;
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     &__header {
-        width: 100vmin;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    &__buttons {
+        width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
     }
     &__back-button,
     &__timer-button {
-        width: 20vmin;
-        height: 8vmin;
+        width: 210px;
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-transform: uppercase;
-        font-size: 3vmin;
-        line-height: 6vmin;
+        font-size: 24px;
+        line-height: 29px;
         background-color: $white;
-        border-radius: 2vmin;
+        border-radius: 10px;
         border: 2px solid $black;
     }
     &__timer-button {
+        padding-left: 40px;
         background-image: url(../../../assets/images/svg/timer-picture.svg);
         background-repeat: no-repeat;
-        background-position-x: 1vmin;
+        background-position-x: 10px;
         background-position-y: center;
-        background-size: 6vmin;
+        background-size: 40px;
         background-color: $white;
         border: 2px solid $black;
     }
@@ -46,23 +54,24 @@
         font-weight: 700;
     }
     &__main {
+        width: 100%;
         margin: auto 0;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        width: 100vmin;
-        gap: 2vmin;
+        gap: 20px;
     }
     &__items {
         width: 100%;
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 6vmin;
+        gap: 20px;
     }
     &__item {
-        width: 32vmin;
-        height: 0;
-        padding-bottom: 32vmin;
+        width: 480px;
+        height: 480px;
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: 20px;
@@ -75,7 +84,6 @@
     }
     &__bullets {
         display: flex;
-
         gap: 30px;
     }
     &__bullet {
@@ -92,6 +100,53 @@
         }
         &_red {
             background-color: $red;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .choose-picture-page {
+        &__item {
+            width: 400px;
+            height: 400px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .choose-picture-page {
+        &__item {
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .choose-picture-page {
+        &__back-button,
+        &__timer-button {
+            width: 150px;
+        }
+        &__bullets {
+            gap: 14px;
+        }
+    }
+}
+
+@media (max-width: 374px) {
+    .choose-author-page {
+        &__back-button,
+        &__timer-button {
+            width: 100px;
+            height: 60px;
+        }
+        &__item {
+            width: 280px;
+            height: 280px;
+        }
+        &__bullets {
+            gap: 8px;
         }
     }
 }

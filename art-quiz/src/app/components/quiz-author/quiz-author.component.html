@@ -1,12 +1,14 @@
 <div class="choose-author-page">
     <div class="choose-author-page__header">
-        <button [routerLink]="['/author-quizes']" class="choose-author-page__back-button">{{'Back' | language}}</button>
         <h2 class="choose-author-page__title">
             {{'Who is the author of this picture?' | language}}
         </h2>
-        <button class="choose-author-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
-            {{timerValue}}
-        </button>
+        <div class="choose-author-page__buttons">
+            <button [routerLink]="['/author-quizes']" class="choose-author-page__back-button">{{'Back' | language}}</button>
+            <button class="choose-author-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
+                {{timerValue}}
+            </button>
+        </div>
     </div>
     <div class="choose-author-page__main">
         <div
@@ -16,7 +18,6 @@
         >
         </div>
         <ng-template #showPop>
-
             <app-quiz-pop *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()" [imageInfo]="imageInfo"></app-quiz-pop>
             <ng-template #showFinalPop>
                 <app-final-pop (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop> 

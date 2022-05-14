@@ -1,33 +1,36 @@
 <div class="choose-picture-page">
     <div class="choose-picture-page__header">
-            <button [routerLink]="['/picture-quizes']" class="choose-picture-page__back-button">{{'Back' | language}}</button>
         <div class="choose-picture-page__title">
-            {{'What picture was painted by' | language}} <span class="choose-picture-page__title-author">{{imageInfo.author}}</span>
+            {{'What picture was painted by' | language}} <span
+                class="choose-picture-page__title-author">{{imageInfo.author}}</span>
         </div>
-        <button class="choose-picture-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
-            {{timerValue}}
-        </button>
+        <div class="choose-picture-page__buttons">
+            <button [routerLink]="['/picture-quizes']" class="choose-picture-page__back-button">{{'Back' |
+                language}}</button>
+            <button class="choose-picture-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
+                {{timerValue}}
+            </button>
+        </div>
     </div>
     <div class="choose-picture-page__main">
         <div *ngIf="showPictures;else showPop" class="choose-picture-page__items">
-            <button *ngFor="let item of answersArray" class="choose-picture-page__item"
-            (click)="onVariantClick($event)"
-            [style.background-image]="'url(../../assets/images/square/' + item + '.jpg)'">
+            <button *ngFor="let item of answersArray" class="choose-picture-page__item" (click)="onVariantClick($event)"
+                [style.background-image]="'url(../../assets/images/square/' + item + '.jpg)'">
             </button>
         </div>
         <ng-template #showPop>
-            <app-quiz-pop *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()" [imageInfo]="imageInfo"></app-quiz-pop>
+            <app-quiz-pop *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()"
+                [imageInfo]="imageInfo"></app-quiz-pop>
             <ng-template #showFinalPop>
-                <app-final-pop (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop> 
+                <app-final-pop (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop>
             </ng-template>
-          </ng-template> 
-          <div class="choose-picture-page__bullets">
-            <div class="choose-picture-page__bullet" *ngFor="let item of questionsStatus"
-            [ngClass]="{
+        </ng-template>
+        <div class="choose-picture-page__bullets">
+            <div class="choose-picture-page__bullet" *ngFor="let item of questionsStatus" [ngClass]="{
                 'choose-picture-page__bullet_yellow': item  === 'active',
                 'choose-picture-page__bullet_green': item  === 'correct',
                 'choose-picture-page__bullet_red': item  === 'incorrect'
-                }" ></div>
+                }"></div>
         </div>
     </div>
 </div>
