@@ -68,8 +68,8 @@
 
     &__item-descr {
         width: 100%;
-        font-size: 36px;
-        line-height: 44px;
+        font-size: 28px;
+        line-height: 30px;
         text-align: right;
         color: $main4;
     }
@@ -100,10 +100,6 @@
         &__picture {
             width: 200px;
             height: 200px;
-        }
-        &__item-descr {
-            font-size: 28px;
-            line-height: 32px;
         }
         &__settings-button {
             width: 180px;

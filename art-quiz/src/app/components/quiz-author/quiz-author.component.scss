@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     &__header {
         width: 100%;
         display: flex;
@@ -19,9 +19,8 @@
         gap: 20px;
     }
     &__buttons {
-        width: 980px;
+        width: 500px;
         display: flex;
-        justify-content: space-between;
     }
     &__back-button,
     &__timer-button {
@@ -38,6 +37,7 @@
         border: 2px solid $black;
     }
     &__timer-button {
+        margin-left: auto;
         padding-left: 40px;
         background-image: url(../../../assets/images/svg/timer-picture.svg);
         background-repeat: no-repeat;
@@ -59,7 +59,6 @@
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         align-items: center;
         gap: 20px;
     }
@@ -91,6 +90,7 @@
         }
     }
     &__answers {
+        margin-top: auto;
         display: flex;
         flex-wrap: wrap;
         width: 520px;
@@ -118,15 +118,14 @@
     }
 }
 
+@media (orientation: portrait) {
+    .choose-author-page {
+        gap: 140px;
+    }
+}
+
 @media (max-width: 1024px) {
     .choose-author-page {
-        &__buttons {
-            width: 90%;
-        }
-        // &__item {
-        //     width: 400px;
-        //     height: 400px;
-        // }
         &__answers {
             width: 440px;
         }
@@ -139,6 +138,10 @@
 
 @media (max-width: 767px) {
     .choose-author-page {
+        gap: 70px;
+        &__buttons {
+            width: 320px;
+        }
         &__back-button,
         &__timer-button {
             width: 150px;
@@ -161,6 +164,7 @@
 
 @media (max-width: 500px) {
     .choose-author-page {
+        gap: 60px;
         &__item {
             width: 300px;
             height: 300px;
@@ -170,6 +174,7 @@
 
 @media (max-width: 374px) {
     .choose-author-page {
+        gap: 50px;
         &__back-button,
         &__timer-button {
             width: 100px;
