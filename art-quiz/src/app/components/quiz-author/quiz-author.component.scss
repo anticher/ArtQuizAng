@@ -1,10 +1,11 @@
 @import "../../../styles.scss";
 
 .choose-author-page {
-    position: relative;
+    margin: 0 auto;
     padding: 20px;
     width: 100%;
     min-height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,7 +19,7 @@
         gap: 20px;
     }
     &__buttons {
-        width: 100%;
+        width: 980px;
         display: flex;
         justify-content: space-between;
     }
@@ -119,10 +120,13 @@
 
 @media (max-width: 1024px) {
     .choose-author-page {
-        &__item {
-            width: 400px;
-            height: 400px;
+        &__buttons {
+            width: 90%;
         }
+        // &__item {
+        //     width: 400px;
+        //     height: 400px;
+        // }
         &__answers {
             width: 440px;
         }
@@ -140,8 +144,8 @@
             width: 150px;
         }
         &__item {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
         }
         &__bullets {
             gap: 14px;
@@ -151,6 +155,15 @@
         }
         &__answer {
             width: 150px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .choose-author-page {
+        &__item {
+            width: 300px;
+            height: 300px;
         }
     }
 }
