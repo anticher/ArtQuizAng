@@ -18,9 +18,9 @@
         >
         </div>
         <ng-template #showPop>
-            <app-quiz-pop *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()" [imageInfo]="imageInfo"></app-quiz-pop>
+            <app-quiz-pop class="choose-author-page__pop" *ngIf="!finalScore; else showFinalPop" (nextQuestionEvent)="nextQuestion()" [imageInfo]="imageInfo"></app-quiz-pop>
             <ng-template #showFinalPop>
-                <app-final-pop (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop> 
+                <app-final-pop class="choose-author-page__pop" (returnToCategories)="returnToCategories()" [score]="finalScore"></app-final-pop> 
             </ng-template>
           </ng-template> 
         <div class="choose-author-page__bullets">

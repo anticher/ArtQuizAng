@@ -1,10 +1,10 @@
-<div class="quiz-pop">
-    <div class="quiz-pop__picture"></div>
-    <p class="quiz-pop__text">
-        <span class="quiz-pop__greetings">{{greetings | language}}</span>
-        <span class="quiz-pop__score">{{score}}/10</span>
+<div class="final-pop">
+    <div class="final-pop__picture"></div>
+    <p class="final-pop__text">
+        <span class="final-pop__greetings">{{greetings | language}}</span>
+        <span class="final-pop__score">{{score}}/10</span>
     </p>
-    <button class="quiz-pop__button" (click)="moveToCategories()">
+    <button class="final-pop__button" (click)="moveToCategories()">
         {{'Next' | language}}
     </button>
 </div>

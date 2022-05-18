@@ -62,7 +62,8 @@
         align-items: center;
         gap: 20px;
     }
-    &__item {
+    &__item,
+    &__pop {
         width: 480px;
         height: 480px;
         background-size: cover;
@@ -146,7 +147,8 @@
         &__timer-button {
             width: 150px;
         }
-        &__item {
+        &__item,
+        &__pop {
             width: 400px;
             height: 400px;
         }
@@ -165,7 +167,8 @@
 @media (max-width: 500px) {
     .choose-author-page {
         gap: 60px;
-        &__item {
+        &__item,
+        &__pop {
             width: 300px;
             height: 300px;
         }
@@ -180,7 +183,8 @@
             width: 100px;
             height: 60px;
         }
-        &__item {
+        &__item,
+        &__pop {
             width: 280px;
             height: 280px;
         }
