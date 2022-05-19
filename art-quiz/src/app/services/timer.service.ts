@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class TimerService {
-  public timerValue$: BehaviorSubject<number> = new BehaviorSubject(999)
+  public timerValue$: BehaviorSubject<number> = new BehaviorSubject(30)
 
   public timesToPause: number = 2
 
@@ -11,9 +11,12 @@ export class TimerService {
 
   public isTimerWorks: boolean = false
 
+  public isTimeGame$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+
   constructor() { }
 
   setTimerValue(value: number): void {
+    this.isTimeGame$.next(true)
     this.timerValue$.next(value)
   }
 

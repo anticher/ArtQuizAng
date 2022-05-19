@@ -7,7 +7,7 @@
         <div class="choose-picture-page__buttons">
             <button [routerLink]="['/picture-quizes']" class="choose-picture-page__back-button">{{'Back' |
                 language}}</button>
-            <button class="choose-picture-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
+            <button *ngIf="isTimeGame" class="choose-picture-page__timer-button" (click)="pauseTimer()" [disabled]="timerDisabled">
                 {{timerValue}}
             </button>
         </div>

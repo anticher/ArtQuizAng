@@ -26,10 +26,12 @@ export class QuizPictureComponent implements OnInit, OnDestroy {
   public variantDisabled: boolean = false;
 
   public timerDisabled: boolean = false;
+
+  public isTimeGame: boolean = false
   
   public finalScore: string = ''
 
-  public timerValue: number | string = ''
+  public timerValue: string = ''
 
   public subscribtions: Subscription = new Subscription
 
@@ -61,13 +63,14 @@ export class QuizPictureComponent implements OnInit, OnDestroy {
       this.variantDisabled = value
       this.timerDisabled = value
     }))
+    this.subscribtions.add(this.timerService.isTimeGame$.subscribe((value) => {
+      this.isTimeGame = value
+    }))
     this.subscribtions.add(this.timerService.timerValue$.subscribe((value) => {
-      if (value === 999) {
-        this.timerValue = ''
+      if (value) {
+        this.timerValue = value.toString()
       } else {
-        this.timerValue = value
-      }
-      if (value === 0) {
+        this.timerValue = '0'
         this.quizPictureService.onTimerEnds();
       }
     }))

@@ -28,7 +28,9 @@ export class QuizAuthorComponent implements OnInit, OnDestroy {
 
   public finalScore: string = ''
 
-  public timerValue: number | string = ''
+  public timerValue: string = ''
+
+  public isTimeGame: boolean = false
 
   public subscribtions: Subscription = new Subscription
 
@@ -60,13 +62,14 @@ export class QuizAuthorComponent implements OnInit, OnDestroy {
       this.variantDisabled = value
       this.timerDisabled = value
     }))
+    this.subscribtions.add(this.timerService.isTimeGame$.subscribe((value) => {
+      this.isTimeGame = value
+    }))
     this.subscribtions.add(this.timerService.timerValue$.subscribe((value) => {
-      if (value === 999) {
-        this.timerValue = ''
+      if (value) {
+        this.timerValue = value.toString()
       } else {
-        this.timerValue = value
-      }
-      if (value === 0) {
+        this.timerValue = '0'
         this.quizAuthorService.onTimerEnds();
       }
     }))
